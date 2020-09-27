@@ -1,0 +1,60 @@
+from sense_hat import SenseHat
+import time
+
+sense = SenseHat()
+sense.low_light = True
+
+red = (255, 0, 0)
+nothing = (0,0,0)
+G = red
+O = nothing
+
+myNameL = [
+    G, O, O, O, O, O, O, O,
+    G, O, O, O, O, O, O, O,
+    G, O, O, O, O, O, O, O,
+    G, O, O, O, O, O, O, O,
+    G, O, O, O, O, O, O, O,
+    G, O, O, O, O, O, O, O,
+    G, O, O, O, O, O, O, O,
+    G, G, G, G, G, O, O, O,
+    ]
+    
+myNameP = [
+    G, G, G, G, O, O, O, O,
+    G, O, O, G, O, O, O, O,
+    G, G, G, G, O, O, O, O,
+    G, O, O, O, O, O, O, O,
+    G, O, O, O, O, O, O, O,
+    G, O, O, O, O, O, O, O,
+    G, O, O, O, O, O, O, O,
+    G, O, O, O, O, O, O, O,
+    ]
+while True: 
+    events = sense.stick.get_events()
+    if events:
+      for event in events:
+        if event.action != 'pressed':
+            #this is a hold or keyup; move on
+            continue
+        if event.direction == 'left':
+            sense.set_pixels(myNameL)
+            time.sleep(1)
+            sense.set_pixels(myNameP)
+        elif event.direction == 'right':
+            sense.set_pixels(myNameL)
+            time.sleep(1)
+            sense.set_pixels(myNameP)
+        elif event.direction == 'middle':
+            sense.set_pixels(myNameL)
+            time.sleep(1)
+            sense.set_pixels(myNameP)
+        elif event.direction == 'up':
+            sense.set_pixels(myNameL)
+            time.sleep(1)
+            sense.set_pixels(myNameP)
+        elif event.direction == 'down':
+            sense.set_pixels(myNameL)
+            time.sleep(1)
+            sense.set_pixels(myNameP)
+        
