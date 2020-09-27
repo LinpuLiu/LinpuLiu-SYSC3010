@@ -1,0 +1,23 @@
+import string 
+import random
+  # make a 4 character--List
+answer = [random.choice('ABCDEF') for item in range(4)]
+print("I've selected a 4-character letter from the letters A,B,C,D,E and F, may have repeated some. Try to guess what it is")
+  # tell the player what is going on
+yourguess = []
+while list(yourguess) != answer:
+    yourguess = input("Enter a 4-letter guess: e.g. ABCD : ").upper() 
+    if len(yourguess) != 4 : 
+        continue
+  # turn the guess into a list, like the answer
+    print("You guessed ", yourguess)
+  # create a list of tuples comparing the secret with the guess
+    comparingList = zip(answer, yourguess)
+  # create a list of the letters that match
+  # (this will be 4 when the lists match exactly)
+    correctList = [speg for speg, gpeg in comparingList if speg == gpeg]
+  # count each of the letters in the answer and the guess and make a note of the fewest in each
+    fewestLetters = [min(answer.count(i), yourguess.count(i)) for i in 'ABCDEF']
+    print("Number of correct letter is ", len(correctList))
+    print("Number of unused letters is ", sum(fewestLetters) - len(correctList))
+print("YOU GOT THE ANSWER : ", answer)
