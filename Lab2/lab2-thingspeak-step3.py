@@ -30,3 +30,6 @@ def read_data_thingspeak() :
 if __name__ == "__main__": 
        
        read_data_thingspeak()
+
+#Reference: The code is based on "read data from thingspeak using python Raspberry pi or arduino", 2018, soumilshah1995
+#                      Link : https://www.youtube.com/watch?v=whXaVYSXItQ
